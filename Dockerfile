@@ -15,10 +15,6 @@ RUN  apk update \
   mkdir /config; \
   mkdir -p /music/podcast; \
   mkdir /playlists; \
-  mkdir transcode; \
-  ln -s $(which ffmpeg) transcode/; \
-  ln -s $(which flac) transcode/; \
-  ln -s $(which lame) transcode/; \
   chmod 500 run.sh; \
   apk del curl; \
   rm -rf /var/cache/apk/*
