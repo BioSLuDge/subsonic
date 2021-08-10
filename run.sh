@@ -12,6 +12,22 @@ if [ -e "${TZ}" ]; then
   echo "$TZ" > /etc/timezone
 fi
 
+if [ ! -d "/config/transcode" ]; then
+  mkdir /config/transcode
+fi
+
+if [ ! -L "/config/transcode/ffmpeg" ]; then
+  ln -s $(which ffmpeg) /config/transcode/
+fi
+
+if [ ! -L "/config/transcode/lame" ]; then
+  ln -s $(which lame) /config/transcode/
+fi
+
+if [ ! -L "/config/transcode/flac" ]; then
+  ln -s $(which flac) /config/transcode/
+fi
+
 addgroup -g $PGID -S subsonic
 adduser -h /subsonic -u $PUID -G subsonic -S -D -H subsonic
 
